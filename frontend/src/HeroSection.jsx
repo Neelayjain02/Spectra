@@ -98,7 +98,7 @@ const HeroSection = () => {
             transition={{ duration: 1 }}
             className="text-6xl md:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-indigo-300 to-purple-500 drop-shadow-[0_0_25px_rgba(56,189,248,0.7)]"
           >
-            TEAM&nbsp;SPECTRA
+            SPECTRA
           </motion.h1>
 
           <motion.h2
@@ -107,6 +107,7 @@ const HeroSection = () => {
             transition={{ duration: 1, delay: 0.5 }}
             className="mt-6 text-xl md:text-3xl text-cyan-200 font-semibold drop-shadow-[0_0_12px_rgba(34,211,238,0.7)]"
           >
+            <p>(Spectroscopic Planetary Exploration, Characterization & Transit Analysis)</p>
             AI-Driven Exoplanet Exploration
           </motion.h2>
 
@@ -131,8 +132,11 @@ const HeroSection = () => {
             >
                 🚀 Launch Explorer
             </button>
-            <button className="px-8 py-3 rounded-full border border-cyan-400 text-cyan-400 hover:bg-cyan-400/20 font-bold transition-all duration-300 transform hover:scale-110">
-              📜 Mission Details
+            <button
+                onClick={() => navigate('/mission')}
+                className="px-8 py-3 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 text-white font-bold shadow-[0_0_25px_rgba(165,243,252,0.5)] transition-all duration-300 transform hover:scale-110"
+            >
+                Mission Details
             </button>
           </motion.div>
         </div>
