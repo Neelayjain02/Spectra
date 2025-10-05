@@ -1,16 +1,17 @@
-# predict.py
+import os
 import joblib
 import numpy as np
 import pandas as pd
 import random
 
-# ---------------- Load Artifacts ----------------
-features = joblib.load("model/koi_features_list.joblib")
-imputer = joblib.load("model/koi_imputer.joblib")
-scaler = joblib.load("model/koi_scaler.joblib")
-le = joblib.load("model/koi_label_encoder.joblib")
-stack_model = joblib.load("model/koi_stack.joblib")
-mlp_model = "model/koi_mlp_model.h5"  # optional MLP
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+features = joblib.load(os.path.join(BASE_DIR, "model/koi_features_list.joblib"))
+imputer = joblib.load(os.path.join(BASE_DIR, "model/koi_imputer.joblib"))
+scaler = joblib.load(os.path.join(BASE_DIR, "model/koi_scaler.joblib"))
+le = joblib.load(os.path.join(BASE_DIR, "model/koi_label_encoder.joblib"))
+stack_model = joblib.load(os.path.join(BASE_DIR, "model/koi_stack.joblib"))
+mlp_model = os.path.join(BASE_DIR, "model/koi_mlp_model.h5")
+
 
 # ---------------- Helper Functions ----------------
 def radius_to_planet_type(radius):
@@ -98,3 +99,4 @@ def predict_planet(sample_dict):
     }
 
     return output
+
