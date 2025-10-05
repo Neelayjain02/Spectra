@@ -7,14 +7,18 @@ WORKDIR /app
 # Copy all backend files
 COPY . .
 
+# Install system dependencies (for LightGBM/XGBoost)
+RUN apt-get update && apt-get install -y libgomp1 && rm -rf /var/lib/apt/lists/*
+
 # Upgrade pip
 RUN pip install --upgrade pip
 
-# Install dependencies
+# Install Python dependencies
 RUN pip install -r requirements.txt
 
 # Expose port (Render sets $PORT automatically)
-EXPOSE 5000
+ENV PORT=5000
+EXPOSE $PORT
 
 # Start the app using gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "server:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:$PORT", "server:app"]
