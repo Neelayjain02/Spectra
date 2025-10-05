@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Stars, OrbitControls } from "@react-three/drei";
 import { motion, AnimatePresence } from "framer-motion";
+import Neelay from "./images/neelay.png";
+import Vishwa from "./images/vishwa.png";
 
 // ----- Floating Glow Particles Behind Boxes -----
 const GlowParticles = ({ count = 100, area = 10 }) => {
@@ -79,13 +81,13 @@ export default function AboutUs() {
     {
       name: "Vishwa Joshi",
       role: "Creative Director & Web Designer",
-      photo: "/images/vishwa.png",
+      photo: "<img src={Vishwa} alt="Neelay Jain",
       bio: "Studying B.Tech Biotechnology at PDEU, India. Leads frontend, creative design, content, and documentation for the exoplanet app.",
     },
     {
       name: "Neelay Jain",
       role: "ML Model & Backend Developer",
-      photo: "/images/neelay.png",
+      photo: "<img src={Neelay} alt="Neelay Jain" />",
       bio: "Studying B.Tech Mechanical Engineering at PDEU, India. Handles ML model training, backend development, and website optimization.",
     },
   ];
@@ -170,3 +172,4 @@ export default function AboutUs() {
     </div>
   );
 }
+
