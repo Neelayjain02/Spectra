@@ -81,13 +81,13 @@ export default function AboutUs() {
     {
       name: "Vishwa Joshi",
       role: "Creative Director & Web Designer",
-      photo: "<img src={Vishwa} alt="Neelay Jain",
+      photo: Vishwa,
       bio: "Studying B.Tech Biotechnology at PDEU, India. Leads frontend, creative design, content, and documentation for the exoplanet app.",
     },
     {
       name: "Neelay Jain",
       role: "ML Model & Backend Developer",
-      photo: "<img src={Neelay} alt="Neelay Jain" />",
+      photo: Neelay,
       bio: "Studying B.Tech Mechanical Engineering at PDEU, India. Handles ML model training, backend development, and website optimization.",
     },
   ];
@@ -172,4 +172,5 @@ export default function AboutUs() {
     </div>
   );
 }
+
 
