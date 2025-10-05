@@ -20,5 +20,5 @@ RUN pip install -r requirements.txt
 ENV PORT=5000
 EXPOSE $PORT
 
-# Start the app using gunicorn
-CMD ["gunicorn", "--bind", "0.0.0.0:$PORT", "server:app"]
+CMD ["gunicorn", "server:app", "--bind", "0.0.0.0:$PORT"]
+
