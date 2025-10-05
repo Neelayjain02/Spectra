@@ -4,6 +4,8 @@ import HeroSection from './HeroSection'
 import FeatureInputPage from './FeatureInputPage'
 import Navbar from './Navbar'
 import Mission from "./Mission";
+import About from "./AboutUs";
+import ContactUs from "./ContactUs";
 
 export default function App() {
   return (
@@ -13,6 +15,8 @@ export default function App() {
         <Route path="/" element={<HeroSection />} />
         <Route path="/features" element={<FeatureInputPage />} />
           <Route path="/mission" element={<Mission />} />
+          <Route path="/aboutus" element={<About />} />
+          <Route path="/contactus" element={<ContactUs />} />
       </Routes>
     </div>
   )
