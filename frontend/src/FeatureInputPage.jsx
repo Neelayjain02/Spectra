@@ -162,9 +162,10 @@ const NebulaGlow = () => (
 // ---------- Feature Input Page ----------
 const FeatureInputPage = () => {
   const [modals, setModals] = useState({ star: false, planet: false, orbit: false });
+  const [showHelp, setShowHelp] = useState(false);
   const [starValues, setStarValues] = useState({ koi_steff: "", koi_srad: "", koi_smass: "", koi_slogg: "", koi_smet: "" });
   const [planetValues, setPlanetValues] = useState({ koi_prad: "", koi_teq: "", koi_depth: "", koi_model_snr: "", koi_fpflag_nt: false, koi_fpflag_ss: false, koi_fpflag_co: false, koi_fpflag_ec: false, koi_score: "" });
-  const [orbitValues, setOrbitValues] = useState({ koi_period: "", koi_duration: "", koi_num_transits: "", koi_impact: "", koi_insol: "", koi_eccentricity: "" });
+  const [orbitValues, setOrbitValues] = useState({ koi_period: "", koi_duration: "", koi_num_transits: "", koi_impact: "", koi_insol: "", koi_sma: "" });
 
   const [showPassport, setShowPassport] = useState(false);
   const [planetData, setPlanetData] = useState({});
@@ -258,8 +259,8 @@ const FeatureInputPage = () => {
       <InputModal isOpen={modals.orbit} onClose={() => setModals({ ...modals, orbit: false })} title="Orbit Properties" fields={orbitFields} values={orbitValues} setValues={setOrbitValues} onSubmit={() => setModals({ ...modals, orbit: false })} />
 
       {/* Combined Progress & Predict */}
-      <div className="fixed bottom-0 left-0 w-full p-4 z-50 flex flex-col items-center pointer-events-none">
-        <div className="w-11/12 h-3 bg-gray-700 rounded-full overflow-hidden pointer-events-none">
+      <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-50 flex flex-col items-center pointer-events-none">
+        <div className="w-96 h-3 bg-gray-700 rounded-full overflow-hidden">
           <div className="h-3 bg-cyan-500" style={{ width: `${combinedProgress}%` }}></div>
         </div>
         <p className="text-xs text-gray-400 mt-1">{combinedProgress}% features completed</p>
@@ -274,6 +275,44 @@ const FeatureInputPage = () => {
           </button>
         )}
       </div>
+
+      {/* Floating Help Button */}
+      <motion.button
+        onClick={() => setShowHelp(!showHelp)}
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        className="fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-cyan-500 text-black font-bold text-2xl shadow-lg hover:shadow-cyan-400/50 pointer-events-auto"
+      >
+        ?
+      </motion.button>
+
+      {/* Help Dialog */}
+      <AnimatePresence>
+        {showHelp && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 30 }}
+            transition={{ type: "spring", stiffness: 100 }}
+            className="fixed bottom-20 right-6 bg-black/90 border border-cyan-500/40 rounded-2xl shadow-xl p-5 w-80 text-white z-50 backdrop-blur-md pointer-events-auto"
+          >
+            <h3 className="text-xl font-bold mb-3 text-cyan-400">How to Use This Site 🚀</h3>
+            <ul className="text-sm text-gray-300 space-y-2">
+              <li>🌟 Click the <b>Star</b> to enter stellar properties.</li>
+              <li>🪐 Click the <b>Planet</b> to enter planet details.</li>
+              <li>🌀 Click the <b>Orbit Ring</b> to enter orbital data.</li>
+              <li>📊 Fill all fields to reach 100% progress.</li>
+              <li>🔮 Press <b>Predict</b> to generate your Planet Passport.</li>
+            </ul>
+            <button
+              className="mt-4 w-full py-2 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-black font-bold"
+              onClick={() => setShowHelp(false)}
+            >
+              Got it!
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Planet Passport */}
       <AnimatePresence>
@@ -299,7 +338,3 @@ const FeatureInputPage = () => {
 };
 
 export default FeatureInputPage;
-
-
-
-
