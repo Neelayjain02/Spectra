@@ -217,7 +217,7 @@ const FeatureInputPage = () => {
     const inputData = { ...starValues, ...planetValues, ...orbitValues };
 
     try {
-      const res = await fetch("https://spectra-f3di.onrender.com/predict", {
+      const res = await fetch("https://neelay21-spectra.hf.space//predict", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(inputData),
@@ -338,3 +338,4 @@ const FeatureInputPage = () => {
 };
 
 export default FeatureInputPage;
+
